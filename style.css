@@ -25,7 +25,34 @@ h1 {
 .subtitle {
   margin-top: 0;
   color: #555;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+}
+
+/* Mode Switch Tabs */
+.mode-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  background: #e3e6ed;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.toggle-btn {
+  flex: 1;
+  background: transparent;
+  color: #555;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn.active {
+  background: #ffffff;
+  color: #4a7dff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .upload-box {
@@ -58,6 +85,23 @@ h1 {
   max-height: 280px;
   border-radius: 8px;
   margin-bottom: 12px;
+}
+
+.text-input-box textarea {
+  width: 100%;
+  min-height: 160px;
+  border: 2px solid #b8bcc4;
+  border-radius: 10px;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.5;
+  outline: none;
+  resize: vertical;
+}
+
+.text-input-box textarea:focus {
+  border-color: #4a7dff;
 }
 
 button {
@@ -166,4 +210,175 @@ button {
   font-size: 14px;
   color: #444;
   background: #fafbfc;
+}
+
+/* ---------------------------------------------------------------------------
+ * Workspace Modal Styles
+ * --------------------------------------------------------------------------- */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal-overlay[hidden] {
+  display: none !important;
+}
+
+.modal-content {
+  background: #ffffff;
+  width: 100%;
+  max-width: 780px;
+  max-height: 90vh;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  padding: 14px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #0f172a;
+}
+
+.close-btn {
+  background: transparent;
+  font-size: 22px;
+  line-height: 1;
+  padding: 4px 8px;
+  color: #64748b;
+}
+
+.close-btn:hover {
+  color: #0f172a;
+}
+
+.llm-banner {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.llm-banner.pending {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.llm-banner.success {
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.llm-banner.error {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.banner-copy-btn {
+  background: #16a34a;
+  color: #ffffff;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.banner-copy-btn:hover {
+  background: #15803d;
+}
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.formatted-question-view {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1e293b;
+  max-height: 220px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+.formatted-question-view p {
+  margin: 0 0 10px 0;
+}
+
+.formatted-question-view p:last-child {
+  margin-bottom: 0;
+}
+
+.typing-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.secondary-copy-btn {
+  background: #e2e8f0;
+  color: #1e293b;
+  font-size: 12px;
+  padding: 4px 10px;
+}
+
+.secondary-copy-btn:hover {
+  background: #cbd5e1;
+}
+
+.user-typing-container textarea {
+  width: 100%;
+  min-height: 180px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.5;
+  outline: none;
+  resize: vertical;
+}
+
+.user-typing-container textarea:focus {
+  border-color: #4a7dff;
 }
