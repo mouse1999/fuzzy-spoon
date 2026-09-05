@@ -10,8 +10,15 @@
 
   <main class="container">
     <h1>Snap &amp; Solve</h1>
-    <p class="subtitle">Upload a picture of your question(s) and get a clean, copyable answer.</p>
+    <p class="subtitle">Upload an image or paste your question to get copy-paste ready answers.</p>
 
+    <!-- Mode Selector Switch -->
+    <div class="mode-toggle">
+      <button type="button" id="tabImageBtn" class="toggle-btn active">📷 Image Upload</button>
+      <button type="button" id="tabTextBtn" class="toggle-btn">📝 Paste Text</button>
+    </div>
+
+    <!-- Image Input Box -->
     <section class="upload-box" id="dropZone">
       <input type="file" id="fileInput" accept="image/*" hidden />
       <img id="preview" class="preview" hidden />
@@ -21,10 +28,16 @@
       </div>
     </section>
 
+    <!-- Text Input Box -->
+    <section class="text-input-box" id="textInputZone" hidden>
+      <textarea id="textQuestionInput" placeholder="Paste or type your question here..."></textarea>
+    </section>
+
     <button id="solveBtn" disabled>Get Answer</button>
 
     <div id="status" class="status" hidden></div>
 
+    <!-- Standard Result Section (for fallback view) -->
     <section id="resultSection" class="result-section" hidden>
       <div class="result-header">
         <h2>Answer</h2>
@@ -33,11 +46,44 @@
       <textarea id="answerBox" readonly></textarea>
 
       <details class="extracted-details">
-        <summary>Show extracted question text</summary>
+        <summary>Show question text</summary>
         <textarea id="questionsBox" readonly></textarea>
       </details>
     </section>
   </main>
+
+  <!-- Reading & Typing Workspace Modal -->
+  <div id="workspaceModal" class="modal-overlay" hidden>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Workspace</h3>
+        <button id="closeModalBtn" class="close-btn" title="Close Modal">&times;</button>
+      </div>
+
+      <!-- Live Answer Popup Bar inside Modal -->
+      <div id="llmAnswerBanner" class="llm-banner pending">
+        <span id="bannerStatusText">⏳ Solvers working... fetching answer...</span>
+        <button id="modalCopyLlmBtn" class="banner-copy-btn" hidden>📋 Copy Answer</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Formatted Display of the Question -->
+        <div class="formatted-question-container">
+          <label class="section-label">Formatted Question:</label>
+          <div id="formattedQuestionDisplay" class="formatted-question-view"></div>
+        </div>
+
+        <!-- Active User Answer Drafting Area -->
+        <div class="user-typing-container">
+          <div class="typing-header">
+            <label class="section-label" for="userAnswerInput">Your Answer Notes:</label>
+            <button id="copyUserAnswerBtn" class="secondary-copy-btn">📋 Copy My Answer</button>
+          </div>
+          <textarea id="userAnswerInput" placeholder="Type or draft your answer here while reading..."></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="config.js"></script>
   <script src="script.js"></script>
